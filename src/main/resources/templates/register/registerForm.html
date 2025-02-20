@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/registerForm.css">
+</head>
+<body>
+<form action="/register/add" method="post">
+    <div class="container">
+        <h1>회원 가입</h1>
+        <p th:if="${message}" th:text="${message}">오류 메시지</p>
+        <hr>
+
+        <label for="member_id"><b>아이디</b></label>
+        <input type="text" placeholder="아이디를 입력하세요." id="member_id" name="member_id" required>
+
+        <label for="pw"><b>비밀번호</b></label>
+        <input type="password" placeholder="비밀번호를 입력하세요." id="pw" name="pw" required>
+
+        <label for="pw_repeat"><b>비밀번호 확인</b></label>
+        <input type="password" placeholder="비밀번호 확인을 위해 재입력하세요." id="pw_repeat" name="pw_repeat" required>
+
+        <label for="name"><b>이름</b></label>
+        <input type="text" placeholder="이름을 입력하세요." id="name" name="name" required>
+
+        <label for="email"><b>이메일</b></label>
+        <input type="email" placeholder="이메일을 입력하세요." id="email" name="email" required>
+
+        <label for="birth"><b>생년월일</b></label>
+        <input type="date" id="birth" name="birth" required>
+
+        <label for="sns">SNS</label>
+        <select id="sns" name="sns">
+            <option value="kakaotalk">카카오톡</option>
+            <option value="facebook">페이스북</option>
+            <option value="instagram">인스타그램</option>
+        </select>
+
+        <div class="clearfix">
+            <button type="submit" class="signupbtn">회원 가입</button>
+            <button type="reset" class="cancelbtn">취소</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

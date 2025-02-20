@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<div class="nav">
+    <div class="nav-bar">
+        <a th:href="@{/}" class="w3-bar-item w3-button">Board Project</a>
+        <div class="nav-bar-right">
+            <a href="#about" class="nav-bar-btn">소개</a>
+            <a th:href="@{/board/list}" class="nav-bar-btn">게시판</a>
+            <a th:if="${memberId}" th:href="@{/login/logout}" class="nav-bar-btn">로그아웃</a>
+            <a th:unless="${memberId}" th:href="@{/login/login}" class="nav-bar-btn">로그인</a>
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <img class="header-image" src="/img/board.jpg" alt="게시판 이미지">
+</header>
+
+<div class="about" id="about">
+    <div class="about-left">
+        <img src="/img/dream.jpg" class="about-left-image" alt="about image">
+    </div>
+
+    <div class="about-right">
+        <h1 class="about-right-title">첫 번째 프로젝트</h1><br>
+        <h5 class="about-right-subtitle">게시판</h5>
+        <p class="about-right-content">
+            The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use ingredients.
+        </p>
+        <p class="about-right-ref">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
+</div>
+
+<footer class="w3-center w3-light-grey w3-padding-32">
+    <p>구현 기간 : 2025.02.13 ~ 2025.02.16</p>
+    <p>powered by SWLee</p>
+</footer>
+</body>
+</html>

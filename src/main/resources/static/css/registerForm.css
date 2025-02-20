@@ -1,0 +1,58 @@
+div.container {
+    padding: 16px;
+    border: 1px solid #ccc;
+}
+
+hr, input {
+    box-sizing: border-box;
+}
+
+hr {
+    margin: 8px 0 25px;
+    width: 100%;
+    border: 1px solid #f1f1f1;
+}
+
+input, select {
+    display: block;
+    padding: 15px;
+    margin: 5px 0 22px;
+    width: 100%;
+    border: none;
+    background-color: #f1f1f1;
+}
+
+div.container > p {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+div.container > div.clearfix {
+    display: flex;
+    flex-direction: row;
+}
+
+div.container > div.clearfix > button {
+    flex-grow: 1;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    color: white;
+}
+
+div.container > div.clearfix > button[type=submit] {
+    background-color: #04AA6D;;
+}
+
+div.container > div.clearfix > button[type=submit]:hover {
+    background-color: #048a59;
+}
+
+div.container > div.clearfix > button[type=reset] {
+    background-color: #f44336;
+}
+
+div.container > div.clearfix > button[type=reset]:hover {
+    background-color: #d83b30;
+}

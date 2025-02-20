@@ -1,0 +1,87 @@
+body,h1 {
+    margin: 0;
+}
+
+div.header {
+    padding: 20px;
+    text-align: center;
+}
+
+.img_container {
+    text-align: center;
+    margin: 0 0 50px
+}
+
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+}
+
+div.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+div.container > div.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+}
+
+div.inner > label, input[type=text], input[type=password] {
+    display: block;
+}
+
+div.inner > input, button {
+    box-sizing: border-box;
+}
+
+div.inner b {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+p.error-message {
+    color: red;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+div.inner > div.options {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+}
+
+div.inner > div.options > a {
+    text-decoration: none;
+    color: gray;
+}
+
+div.inner > div.options > a:hover {
+    text-decoration: underline;
+}
+
+input[type=text], input[type=password] {
+    display: inline-block;
+    padding: 10px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+button[type=submit] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    color: white;
+    background-color:#04AA6D;
+}
+
+button[type=submit]:hover {
+    background-color:#03734a;
+}
