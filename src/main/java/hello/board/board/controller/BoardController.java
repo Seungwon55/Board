@@ -4,6 +4,8 @@ import hello.board.board.PageHandler;
 import hello.board.board.SearchCondition;
 import hello.board.board.aop.LoginCheck;
 import hello.board.board.dto.BoardDTO;
+import hello.board.board.dto.BoardMemberDTO;
+import hello.board.board.service.BoardMemberService;
 import hello.board.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,19 +13,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardMemberService boardMemberService;
 
     @Autowired
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService, BoardMemberService boardMemberService) {
         this.boardService = boardService;
+        this.boardMemberService = boardMemberService;
     }
 
     @GetMapping("/list")
@@ -31,15 +33,15 @@ public class BoardController {
         // 로그인이 되어 있다면, 게시물 목록 보여주기
         try {
             // 해당 페이지의 게시물을 가져오기 위한 변수 세팅
-            int totalCnt = boardService.getResultCnt(sc);
+            int totalCnt = boardMemberService.getResultCnt(sc);
 
             PageHandler ph = new PageHandler(totalCnt, sc);
 
             // 해당 페이지의 게시물 가져오기
-            List<BoardDTO> boardDTOList = boardService.getResultList(sc);
+            List<BoardMemberDTO> boardMemberDTOList = boardMemberService.getResultList(sc);
 
             model.addAttribute("pageHandler", ph);
-            model.addAttribute("boardList", boardDTOList);
+            model.addAttribute("boardMemberList", boardMemberDTOList);
         } catch (Exception e) {
             System.out.println("에러 : " + e.getMessage());
         }

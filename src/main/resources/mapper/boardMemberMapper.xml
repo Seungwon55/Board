@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hello.board.board.dao.BoardMemberMapper">
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="T"'>
+                AND b.title LIKE ('%' || #{keyword} || '%')
+            </when>
+            <when test='option=="W"'>
+                AND m.name LIKE ('%' || #{keyword} || '%')
+            </when>
+            <otherwise>
+                AND (b.title LIKE ('%' || #{keyword} || '%')
+                OR b.content LIKE ('%' || #{keyword} || '%'))
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="selectResultCnt" parameterType="SearchCondition" resultType="Integer">
+        SELECT COUNT(*)
+        FROM board b, member m
+        WHERE b.member_id = m.id
+        <include refid="searchCondition"/>
+    </select>
+
+    <select id="selectResultList" parameterType="SearchCondition" resultType="BoardMemberDTO">
+        SELECT *
+        FROM (SELECT rownum as bnum, b.*
+              FROM (SELECT b.bno, b.title, m.name, b.reg_date, b.view_cnt
+                    FROM board b, member m
+                    WHERE b.member_id = m.id
+                    <include refid="searchCondition"/>
+                    ORDER BY bno DESC) b)
+        WHERE bnum BETWEEN #{beginRow} AND #{endRow}
+    </select>
+</mapper>

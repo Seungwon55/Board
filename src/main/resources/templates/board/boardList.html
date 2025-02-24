@@ -34,12 +34,12 @@
             <th>조회수</th>
         </tr>
 
-        <tr th:each="board : ${boardList}">
-            <td th:text="${board.bno}">번호</td>
-            <td><a th:href="@{/board/read/{bno}(bno=${board.bno},page=${pageHandler.sc.page})}" th:text="${board.title}">제목</a></td>
-            <td th:text="${board.getMember_id()}">이름</td>
-            <td th:text="${board.reg_date}">등록일</td>
-            <td th:text="${board.view_cnt}">조회수</td>
+        <tr th:each="boardMember : ${boardMemberList}">
+            <td th:text="${boardMember.bno}">번호</td>
+            <td><a th:href="@{/board/read/{bno}(bno=${boardMember.bno},page=${pageHandler.sc.page})}" th:text="${boardMember.title}">제목</a></td>
+            <td th:text="${boardMember.getName()}">이름</td>
+            <td th:text="${boardMember.reg_date}">등록일</td>
+            <td th:text="${boardMember.view_cnt}">조회수</td>
         </tr>
     </table>
 </div>

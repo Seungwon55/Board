@@ -87,11 +87,11 @@
                 AND title LIKE ('%' || #{keyword} || '%')
             </when>
             <when test='option=="W"'>
-                AND writer LIKE ('%' || #{keyword} || '%')
+                AND member_id LIKE ('%' || #{keyword} || '%')
             </when>
             <otherwise>
-                AND (title LIKE ('%' || #{keyword} || '%')
-                OR content LIKE('%' || #{keyword} || '%'))
+                AND title LIKE ('%' || #{keyword} || '%')
+                OR content LIKE ('%' || #{keyword} || '%')
             </otherwise>
         </choose>
     </sql>

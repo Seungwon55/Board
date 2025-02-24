@@ -22,7 +22,7 @@ public class LoginCheckAdvice {
         Integer memberId = (Integer) session.getAttribute("memberId");
 
         if (memberId == null) {
-            response.sendRedirect("/login/login?uri=" + request.getRequestURI() + "&parameter=" + request.getQueryString());
+            response.sendRedirect("/login/login?uri=" + request.getRequestURI());
         }
     }
 }
