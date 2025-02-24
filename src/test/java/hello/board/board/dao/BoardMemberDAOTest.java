@@ -31,7 +31,7 @@ class BoardMemberDAOTest {
         int resultCnt = boardMemberDAO.selectResultCnt(sc);
         PageHandler ph = new PageHandler(resultCnt, sc);
 
-        List<BoardMemberDTO> boardMemberDTOList = boardMemberDAO.select(sc);
+        List<BoardMemberDTO> boardMemberDTOList = boardMemberDAO.selectResultList(sc);
 
         assertEquals(boardMemberDTOList.size(), 4);
     }
