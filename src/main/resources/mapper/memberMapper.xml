@@ -12,17 +12,17 @@
     <select id="selectById" parameterType="String" resultType="MemberDTO">
         SELECT *
         FROM member
-        WHERE member_id = #{memeber_id}
+        WHERE login_id = #{login_id}
     </select>
 
     <insert id="insert" parameterType="MemberDTO">
-        INSERT INTO member(id ,member_id, pw, name, email, birth, sns)
-        VALUES (member_seq.NEXTVAL, #{member_id}, #{pw}, #{name}, #{email}, #{birth}, #{sns})
+        INSERT INTO member(id ,login_id, pw, name, email, birth, sns)
+        VALUES (member_seq.NEXTVAL, #{login_id}, #{pw}, #{name}, #{email}, #{birth}, #{sns})
     </insert>
 
     <update id="update" parameterType="MemberDTO">
         UPDATE member
-        SET member_id = #{member_id}, sns = #{sns}
+        SET login_id = #{login_id}, sns = #{sns}
         WHERE id = #{id}
     </update>
 

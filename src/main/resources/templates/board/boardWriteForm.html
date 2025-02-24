@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/fragment/navigation.css">
+    <link rel="stylesheet" href="/css/boardWriteForm.css">
+</head>
+<body>
+
+<div th:replace="~{fragment/navigation :: navBar(${memberId})}"></div>
+
+<div class="container">
+    <h2 class="writing-header">게시판</h2>
+    <form action="/board/write" method="post" class="inner">
+
+        <label>
+            <input name="title" type="text" placeholder="제목을 입력하새요.">
+        </label><br>
+        <label>
+            <textarea name="content" rows="20" placeholder="내용을 입력해 주세요."></textarea>
+        </label><br>
+
+        <button type="submit" class="btn btn-modify"><i class="fa fa-pencil"></i>작성</button>
+        <input type="hidden" name="member_id" th:value="${session.memberId}">
+    </form>
+</div>
+
+</body>
+</html>

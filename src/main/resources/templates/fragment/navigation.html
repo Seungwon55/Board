@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="navBar(memberId)">
+    <div class="nav">
+        <div class="nav-bar">
+            <a href="/" class="w3-bar-item w3-button">Board Project</a>
+            <div class="nav-bar-right">
+                <a href="#about">소개</a>
+                <a th:href="@{/board/list}" class="nav-bar-btn">게시판</a>
+                <a th:if="${session.memberId}" th:href="@{/login/logout}" class="nav-bar-btn">로그아웃</a>
+                <a th:unless="${session.memberId}" th:href="@{/login/login}" class="nav-bar-btn">로그인</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

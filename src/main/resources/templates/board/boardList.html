@@ -3,26 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>BoardList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/fragment/navigation.css">
+    <link rel="stylesheet" href="/css/boardList.css">
 </head>
 <body>
-    <h1>게시판 목록 보여주는 페이지</h1>
 
+<div th:replace="~{fragment/navigation :: navBar(${memberId})}"></div>
+
+<form class="example" action="/board/list" method="get">
+    <select class="search-option" name="option">
+        <option value="A" th:selected="${pageHandler.sc.option == 'A'}">제목+내용</option>
+        <option value="T" th:selected="${pageHandler.sc.option == 'T'}">제목</option>
+        <option value="W" th:selected="${pageHandler.sc.option == 'W'}">작성자</option>
+    </select>
+    <input type="text" placeholder="검색어를 입력해주세요" name="keyword" th:value="${pageHandler.sc.keyword}">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <a href="/board/write" class="btn btn-write"><i class="fa fa-pencil"></i>글쓰기</a>
+</form>
+
+<hr>
+
+<div class="container">
     <table>
         <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>이름</td>
-            <td>등록일</td>
-            <td>조회수</td>
+            <th>번호</th>
+            <th>제목</th>
+            <th>이름</th>
+            <th>등록일</th>
+            <th>조회수</th>
         </tr>
 
-        <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>이름</td>
-            <td>등록일</td>
-            <td>조회수</td>
+        <tr th:each="board : ${boardList}">
+            <td th:text="${board.bno}">번호</td>
+            <td><a th:href="@{/board/read/{bno}(bno=${board.bno},page=${pageHandler.sc.page})}" th:text="${board.title}">제목</a></td>
+            <td th:text="${board.getMember_id()}">이름</td>
+            <td th:text="${board.reg_date}">등록일</td>
+            <td th:text="${board.view_cnt}">조회수</td>
         </tr>
     </table>
+</div>
+
+<div>
+    <form class="howtopag" action="/board/list" method="get">
+        <button type="submit" name="page" th:value="${pageHandler.sc.page}-10" th:class="'howtopag_item' + (${pageHandler.sc.page >= 1 and pageHandler.sc.page <= 10} ? '_pagdisabled' : '')">❮❮</button>
+        <button type="submit" name="page" th:value="${pageHandler.sc.page}-1" th:class="'howtopag_item' + (${pageHandler.showPrev} ? '' : '_pagdisabled')">❮</button>
+        <th:block th:each="num : ${#numbers.sequence(pageHandler.beginPage, pageHandler.endPage)}">
+            <button type="submit" name="page" th:value="${num}" th:text="${num}" th:class="'howtopag_item' + (${pageHandler.sc.page == num} ? '_pagactive' : '')">num</button>
+        </th:block>
+        <button type="submit" name="page" th:value="${pageHandler.sc.page}+1" th:class="'howtopag_item' + (${pageHandler.showNext} ? '' : '_pagdisabled')">❯</button>
+        <button type="submit" name="page" th:value="${pageHandler.sc.page}+10" th:class="'howtopag_item' + (${pageHandler.totalPage - 10 < pageHandler.sc.page} ? '_pagdisabled' : '')">❯❯</button>
+
+        <input type="hidden" name="option" th:value="${pageHandler.sc.option}">
+        <input type="hidden" name="keyword" th:value="${pageHandler.sc.keyword}">
+    </form>
+</div>
+
 </body>
 </html>

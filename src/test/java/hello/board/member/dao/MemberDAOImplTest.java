@@ -18,19 +18,19 @@ class MemberDAOImplTest {
     MemberDAO memberDAO;
 
     @Test
+    public void selectTest() throws Exception {
+        MemberDTO memberDTO = memberDAO.select(12);
+
+        assertNotNull(memberDTO);
+    }
+
+    @Test
     @Transactional
     public void insertTest() throws Exception {
         MemberDTO memberDTO = new MemberDTO("qwer", "1234", "zxcv", "qwer@naver.com", Date.valueOf("1989-07-14"), "instagram");
         int rowCnt = memberDAO.insert(memberDTO);
 
         assertEquals(rowCnt, 1);
-    }
-
-    @Test
-    public void selectTest() throws Exception {
-        MemberDTO memberDTO = memberDAO.select(12);
-
-        assertNotNull(memberDTO);
     }
 
     @Test
@@ -44,7 +44,7 @@ class MemberDAOImplTest {
     @Transactional
     public void updateTest() throws Exception {
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setMember_id("zxcv");
+        memberDTO.setLogin_id("zxcv");
         memberDTO.setSns("kakaotalk");
         memberDTO.setId(12);
 

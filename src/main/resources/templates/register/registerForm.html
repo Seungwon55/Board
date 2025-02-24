@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="/css/registerForm.css">
 </head>
 <body>
+
 <form action="/register/add" method="post">
     <div class="container">
         <h1>회원 가입</h1>
         <p th:if="${message}" th:text="${message}">오류 메시지</p>
         <hr>
 
-        <label for="member_id"><b>아이디</b></label>
-        <input type="text" placeholder="아이디를 입력하세요." id="member_id" name="member_id" required>
+        <label for="login_id"><b>아이디</b></label>
+        <input type="text" placeholder="아이디를 입력하세요." id="login_id" name="login_id" required>
 
         <label for="pw"><b>비밀번호</b></label>
         <input type="password" placeholder="비밀번호를 입력하세요." id="pw" name="pw" required>
@@ -44,5 +45,6 @@
         </div>
     </div>
 </form>
+
 </body>
 </html>

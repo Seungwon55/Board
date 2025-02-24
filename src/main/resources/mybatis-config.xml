@@ -6,6 +6,8 @@
     <typeAliases>
         <typeAlias type="hello.board.board.dto.BoardDTO" alias="BoardDTO"/>
         <typeAlias type="hello.board.member.dto.MemberDTO" alias="MemberDTO"/>
+        <typeAlias type="hello.board.comments.dto.CommentsDTO" alias="CommentsDTO"/>
+        <typeAlias type="hello.board.board.SearchCondition" alias="SearchCondition"/>
         <typeAlias type="java.lang.Integer" alias="Integer"/>
         <typeAlias type="java.lang.String" alias="String"/>
         <typeAlias type="java.util.Map" alias="Map"/>

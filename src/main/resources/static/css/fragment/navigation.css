@@ -1,0 +1,26 @@
+div.nav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: white;
+}
+
+div.nav-bar {
+    padding: 16px 16px;
+}
+
+div.nav-bar-right {
+    position: absolute;
+    right: 16px;
+    display: inline-block;
+}
+
+div.nav a {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+div.nav a:hover {
+    background-color: #eee;
+}

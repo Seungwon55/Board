@@ -17,7 +17,7 @@ public class MemberDTO {
     private Integer id;
 
     @Size(min = 5, max = 20, message = "아이디는 5자 이상 20자 이하로 입력해야 합니다.")
-    private String member_id;
+    private String login_id;
 
     @Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하로 입력해야 합니다.")
     private String pw;
@@ -38,8 +38,8 @@ public class MemberDTO {
 
     }
 
-    public MemberDTO(String member_id, String pw, String name, String email, Date birth, String sns) {
-        this.member_id = member_id;
+    public MemberDTO(String login_id, String pw, String name, String email, Date birth, String sns) {
+        this.login_id = login_id;
         this.pw = pw;
         this.name = name;
         this.email = email;

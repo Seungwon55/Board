@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString
 public class LoginDTO {
 
-    private String member_id;
+    private String login_id;
     private String pw;
     private boolean remember;
 }

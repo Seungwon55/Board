@@ -1,7 +1,7 @@
 package hello.board.board.dao;
 
+import hello.board.board.SearchCondition;
 import hello.board.board.dto.BoardDTO;
-import hello.board.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,8 @@ public class BoardDAOImpl implements BoardDAO {
     }
 
     @Override
-    public int delete(@Param("bno") Integer bno, @Param("writer") String writer) throws Exception {
-        return sql.delete(namespace + "delete", Map.of("bno", bno, "writer", writer));
+    public int delete(@Param("bno") Integer bno, @Param("member_id") Integer member_id) throws Exception {
+        return sql.delete(namespace + "delete", Map.of("bno", bno, "member_id", member_id));
     }
 
     @Override
@@ -64,5 +64,20 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public int count() throws Exception {
         return sql.selectOne(namespace + "count");
+    }
+
+    @Override
+    public int selectResultCnt(SearchCondition sc) throws Exception {
+        return sql.selectOne(namespace + "selectResultCnt", sc);
+    }
+
+    @Override
+    public List<BoardDTO> selectAllByCondition(SearchCondition sc) throws Exception {
+        return sql.selectList(namespace + "selectAllByCondition", sc);
+    }
+
+    @Override
+    public int updateCommentCnt(Integer bno, int num) throws Exception {
+        return sql.update(namespace + "updateCommentCnt", Map.of("bno", bno, "num", num));
     }
 }

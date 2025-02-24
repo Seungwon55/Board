@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    background-color: rgba(238, 238, 238, 0.8);
+}
+
+form.example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 10px;
+}
+
+form.example select {
+    padding: 15px;
+    margin: 0 10px 0;
+    font-size: 15px;
+}
+
+form.example input[type=text] {
+    flex-basis: 300px;
+    padding: 15px;
+    float: left;
+    border: 1px solid grey;
+    font-size: 15px;
+    background: white;
+}
+
+form.example button {
+    flex-basis: 80px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+    background: #2196F3;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example a.btn {
+    border: 1px solid gray; /* Remove borders */
+    color: black; /* White text */
+    padding: 13px; /* Some padding */
+    margin: 0 0 0 20px;
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+form.example a.btn:hover {
+    text-decoration: underline;
+}
+
+hr {
+    width: 80%;
+    border: 1px solid black;
+}
+
+div.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0;
+}
+
+div.container > table {
+    width: 70%;
+    border: 1px solid #ddd;
+    border-spacing: 0;
+}
+
+div.container tr:nth-child(even) {
+    background-color: white;
+}
+
+div.container th, td {
+    padding: 16px;
+    text-align: left;
+}
+
+div.container th {
+    color: white;
+    background-color: #04AA6D;
+}
+
+div.container td > a {
+    text-decoration: none;
+    color: black;
+}
+
+div.container td > a:hover {
+    text-decoration: underline;
+}
+
+form.howtopag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+form.howtopag button {
+    padding: 0 15px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form.howtopag button.howtopag_item_pagdisabled {
+    pointer-events: none;
+    color: #ddd;
+}
+
+form.howtopag button.howtopag_item_pagactive {
+    color: white;
+    background-color: #04AA6D;
+}
+
+form.howtopag button:hover {
+    background-color: #ddd;
+}

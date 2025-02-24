@@ -30,8 +30,8 @@ public class MemberDAOImpl implements MemberDAO {
     }
 
     @Override
-    public MemberDTO selectById(String member_id) {
-        return sql.selectOne(namespace + "selectById", member_id);
+    public MemberDTO selectById(String login_id) {
+        return sql.selectOne(namespace + "selectById", login_id);
     }
 
     @Override

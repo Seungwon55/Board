@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MemberDAO {
     MemberDTO select(Integer id) throws Exception;
-    MemberDTO selectById(String member_id) throws Exception;
+    MemberDTO selectById(String login_id) throws Exception;
     int insert(MemberDTO memberDTO) throws Exception;
     int update(MemberDTO memberDTO) throws Exception;
     int delete(Integer id) throws Exception;

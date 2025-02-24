@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -27,8 +25,10 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String loginForm(@CookieValue(name = "memberId", required = false) String memberId, Model model) {
-        model.addAttribute("member_id", memberId);
+    public String loginForm(@CookieValue(name = "loginId", required = false) String loginId,
+                            @RequestParam(required = false) String uri, Model model) {
+        model.addAttribute("loginId", loginId);
+        model.addAttribute("uri", uri);
 
         return "login/loginForm";
     }
@@ -40,7 +40,7 @@ public class LoginController {
 
         // 입력한 아이디와 같은 회원 가져오기
         try {
-            memberDTO = memberDAO.selectById(loginDTO.getMember_id());
+            memberDTO = memberDAO.selectById(loginDTO.getLogin_id());
         } catch (Exception e) {
             System.out.println("에러 : " + e.getMessage());
         }
@@ -54,17 +54,17 @@ public class LoginController {
         // 로그인 성공
         // 로그인 여부 확인을 위해 세션 저장소에 아이디 저장
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", memberDTO.getMember_id());
+        session.setAttribute("memberId", memberDTO.getId());
 
         // 아이디 저장이 체크되어 있으면 쿠키에 아이디 저장
         Cookie cookie;
         if (loginDTO.isRemember()) {
-            cookie = new Cookie("memberId", memberDTO.getMember_id());
+            cookie = new Cookie("loginId", memberDTO.getLogin_id());
             cookie.setMaxAge(60 * 5);
         }
         // 아이디 저장이 체크되어 있지 않으면 쿠키 삭제
         else {
-            cookie = new Cookie("memberId", null);
+            cookie = new Cookie("loginId", null);
             cookie.setMaxAge(0);
         }
         response.addCookie(cookie);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/fragment/navigation.css">
+    <link rel="stylesheet" href="/css/boardDetail.css">
+</head>
+<body>
+
+<div th:replace="~{fragment/navigation :: navBar(${memberId})}"></div>
+
+<div class="container">
+    <h2 class="writing-header">게시판</h2>
+    <p th:text="${message}">참고 메세지</p>
+    <div class="inner">
+
+        <label>
+            <input name="title" type="text" th:value="${board.title}" placeholder="제목을 입력하새요." readonly>
+        </label><br>
+        <label>
+            <textarea name="content" rows="20" th:text="${board.content}" placeholder="내용을 입력해 주세요." readonly></textarea>
+        </label><br>
+
+        <a th:href="@{/board/update/{bno}(bno=${bno})}" class="btn btn-modify"><i class="fa fa-edit"></i>수정</a>
+        <form th:action="@{/board/delete/{bno}(bno=${bno},page=${page})}" method="post">
+            <button type="submit" class="btn btn-remove"><i class="fa fa-trash"></i>삭제</button>
+        </form>
+        <a th:href="@{/board/list(page=${page})}" class="btn btn-list"><i class="fa fa-bars"></i>목록</a>
+    </div>
+</div>
+
+</body>
+</html>

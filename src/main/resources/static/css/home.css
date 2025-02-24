@@ -2,33 +2,6 @@ body {
     margin: 0;
 }
 
-div.nav {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    background-color: white;
-}
-
-div.nav-bar {
-    padding: 16px 16px;
-}
-
-div.nav-bar-right {
-    position: absolute;
-    right: 16px;
-    display: inline-block;
-}
-
-a {
-    padding: 8px 16px;
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    background-color: #eee;
-}
-
 header {
     max-width: 1600px;
     min-width: 500px;
@@ -41,7 +14,7 @@ img.header-image {
 
 div.about {
     display: flex;
-    margin: 64px 0;
+    padding: 64px 0;
 }
 
 div.about-left > img {

@@ -4,42 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="/css/fragment/navigation.css">
     <link rel="stylesheet" href="/css/loginForm.css">
 </head>
 <body>
 
-    <div class="header">
-        <h1>Board Project</h1>
+<div th:replace="~{fragment/navigation :: navBar(${memberId})}"></div>
+
+<form action="/login/login" method="post">
+    <div class="img_container">
+        <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
-    <form action="" method="post">
-        <div class="img_container">
-            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+    <div class="container">
+        <div class="inner">
+            <form action="/login/login" method="post">
+                <label for="login_id"><b>아이디</b></label>
+                <input type="text" placeholder="아이디를 입력하세요." id="login_id" name="login_id" th:value="${loginId}" required>
+
+                <label for="pw"><b>패스워드</b></label>
+                <input type="password" placeholder="비밀번호를 입력하세요." id="pw" name="pw" required>
+
+                <button type="submit">로그인</button>
+                <p class="error-message" th:if="${message}" th:text="|※ ${message}|">아이디 또는 비밀번호를 확인하세요.</p>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember" th:checked="${loginId != null}">아이디 저장
+                    </label>
+                    <a href="/register/add">회원 가입</a>
+                </div>
+
+                <input type="hidden" name="uri" th:value="${uri}">
+            </form>
         </div>
-
-        <div class="container">
-            <div class="inner">
-                <form action="/login/login" method="post">
-                    <label for="member_id"><b>아이디</b></label>
-                    <input type="text" placeholder="아이디를 입력하세요." id="member_id" name="member_id" th:value="${member_id}" required>
-
-                    <label for="pw"><b>패스워드</b></label>
-                    <input type="password" placeholder="비밀번호를 입력하세요." id="pw" name="pw" required>
-
-                    <button type="submit">로그인</button>
-                    <p class="error-message" th:if="${message}" th:text="|※ ${message}|">아이디 또는 비밀번호를 확인하세요.</p>
-                    <div class="options">
-                        <label>
-                            <input type="checkbox" name="remember" th:checked="${member_id != null}">아이디 저장
-                        </label>
-                        <a href="/register/add">회원 가입</a>
-                    </div>
-
-                    <input type="hidden" name="uri" th:value="${uri}">
-                </form>
-            </div>
-        </div>
-    </form>
+    </div>
+</form>
 
 </body>
 </html>
