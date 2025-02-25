@@ -11,5 +11,4 @@ public interface MemberDAO {
     int update(MemberDTO memberDTO) throws Exception;
     int delete(Integer id) throws Exception;
     List<MemberDTO> selectAll() throws Exception;
-
 }

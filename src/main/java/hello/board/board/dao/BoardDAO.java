@@ -13,7 +13,7 @@ public interface BoardDAO {
     int insert(BoardDTO boardDTO) throws Exception;
     int update(BoardDTO boardDTO) throws Exception;
     int increaseViewCnt(Integer bno) throws Exception;
-    List<BoardDTO> selectPage(Map<String, Integer> map) throws Exception;
+    List<BoardDTO> selectPage(int beginRow, int endRow) throws Exception;
     List<BoardDTO> selectAll() throws Exception;
     int deleteAll() throws Exception;
     int count() throws Exception;

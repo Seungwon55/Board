@@ -12,7 +12,7 @@ public interface BoardService {
     int write(BoardDTO boardDto) throws Exception;
     List<BoardDTO> getList() throws Exception;
     BoardDTO read(Integer bno) throws Exception;
-    List<BoardDTO> getPage(Map<String, Integer> map) throws Exception;
+    List<BoardDTO> getPage(int beginRow, int endRow) throws Exception;
     int modify(BoardDTO boardDto) throws Exception;
     int increaseViewCnt(Integer bno) throws Exception;
     boolean isOwner(Integer bno, Integer loginMemberId) throws Exception;

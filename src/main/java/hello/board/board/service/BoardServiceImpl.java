@@ -49,8 +49,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardDTO> getPage(Map<String, Integer> map) throws Exception {
-        return boardDAO.selectPage(map);
+    public List<BoardDTO> getPage(int beginRow, int endRow) throws Exception {
+        return boardDAO.selectPage(beginRow, endRow);
     }
 
     @Override

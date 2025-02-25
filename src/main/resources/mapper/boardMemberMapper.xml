@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="hello.board.board.dao.BoardMemberMapper">
+<mapper namespace="hello.board.board.mapper.BoardMemberMapper">
     <sql id="searchCondition">
         <choose>
             <when test='option=="T"'>

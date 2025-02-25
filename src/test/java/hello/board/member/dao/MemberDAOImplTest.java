@@ -35,7 +35,7 @@ class MemberDAOImplTest {
 
     @Test
     public void selectByIdTest() throws Exception {
-        MemberDTO memberDTO = memberDAO.selectById("asdf");
+        MemberDTO memberDTO = memberDAO.selectById("spring");
 
         assertNotNull(memberDTO);
     }
@@ -65,6 +65,6 @@ class MemberDAOImplTest {
     public void selectAllTest() throws Exception {
         List<MemberDTO> memberDTOList = memberDAO.selectAll();
 
-        assertEquals(memberDTOList.size(), 1);
+        assertEquals(memberDTOList.size(), 4);
     }
 }
