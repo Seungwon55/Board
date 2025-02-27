@@ -37,7 +37,7 @@ public class PageHandler {
         beginRow = (sc.getPage() - 1) * pageSize + 1;
         endRow = sc.getPage() * pageSize;
         showPrev = sc.getPage() != 1;
-        showNext = sc.getPage() != totalPage;
+        showNext = sc.getPage() != totalPage && totalPage != 0;
 
         sc.setBeginRow(beginRow);
         sc.setEndRow(endRow);

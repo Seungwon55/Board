@@ -48,8 +48,10 @@
     <form class="howtopag" action="/board/list" method="get">
         <button type="submit" name="page" th:value="${pageHandler.sc.page}-10" th:class="'howtopag_item' + (${pageHandler.sc.page >= 1 and pageHandler.sc.page <= 10} ? '_pagdisabled' : '')">❮❮</button>
         <button type="submit" name="page" th:value="${pageHandler.sc.page}-1" th:class="'howtopag_item' + (${pageHandler.showPrev} ? '' : '_pagdisabled')">❮</button>
-        <th:block th:each="num : ${#numbers.sequence(pageHandler.beginPage, pageHandler.endPage)}">
-            <button type="submit" name="page" th:value="${num}" th:text="${num}" th:class="'howtopag_item' + (${pageHandler.sc.page == num} ? '_pagactive' : '')">num</button>
+        <th:block th:unless="${pageHandler.endPage == 0}">
+            <th:block th:each="num : ${#numbers.sequence(pageHandler.beginPage, pageHandler.endPage)}">
+                <button type="submit" name="page" th:value="${num}" th:text="${num}" th:class="'howtopag_item' + (${pageHandler.sc.page == num} ? '_pagactive' : '')">num</button>
+            </th:block>
         </th:block>
         <button type="submit" name="page" th:value="${pageHandler.sc.page}+1" th:class="'howtopag_item' + (${pageHandler.showNext} ? '' : '_pagdisabled')">❯</button>
         <button type="submit" name="page" th:value="${pageHandler.sc.page}+10" th:class="'howtopag_item' + (${pageHandler.totalPage - 10 < pageHandler.sc.page} ? '_pagdisabled' : '')">❯❯</button>
