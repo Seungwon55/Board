@@ -25,23 +25,43 @@
 <hr>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>이름</th>
-            <th>등록일</th>
-            <th>조회수</th>
-        </tr>
+    <div class="left-con">
+        <h2>게시판 목록</h2>
+        <hr>
+        <ul id="category">
+            <li><a th:href="@{/board/list?categoryId=0}">전체 게시글 보기</a></li>
+            <li><a th:href="@{/board/list?categoryId=1}">정보 게시판</a></li>
+            <li><a th:href="@{/board/list?categoryId=2}">자유 게시판</a></li>
+        </ul>
 
-        <tr th:each="boardMember : ${boardMemberList}">
-            <td th:text="${boardMember.bno}">번호</td>
-            <td><a th:href="@{/board/read/{bno}(bno=${boardMember.bno},page=${pageHandler.sc.page})}" th:text="${boardMember.title}">제목</a></td>
-            <td th:text="${boardMember.getName()}">이름</td>
-            <td th:text="${boardMember.reg_date}">등록일</td>
-            <td th:text="${boardMember.view_cnt}">조회수</td>
-        </tr>
-    </table>
+        <h2>해시태그</h2>
+        <hr>
+        <ul id="hashtag">
+            <li><a th:href="@{/board/list?hashtagId=1}">#공부</a></li>
+            <li><a th:href="@{/board/list?hashtagId=2}">#운동</a></li>
+            <li><a th:href="@{/board/list?hashtagId=3}">#취미</a></li>
+        </ul>
+    </div>
+
+    <div class="right-con">
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>이름</th>
+                <th>등록일</th>
+                <th>조회수</th>
+            </tr>
+
+            <tr th:each="boardMember : ${boardMemberList}">
+                <td th:text="${boardMember.bno}">번호</td>
+                <td><a th:href="@{/board/read/{bno}(bno=${boardMember.bno},page=${pageHandler.sc.page})}" th:text="${boardMember.title}">제목</a></td>
+                <td th:text="${boardMember.getName()}">이름</td>
+                <td th:text="${boardMember.reg_date}">등록일</td>
+                <td th:text="${boardMember.view_cnt}">조회수</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <div>
@@ -58,6 +78,8 @@
 
         <input type="hidden" name="option" th:value="${pageHandler.sc.option}">
         <input type="hidden" name="keyword" th:value="${pageHandler.sc.keyword}">
+        <input type="hidden" name="categoryId" th:value="${pageHandler.sc.categoryId}">
+        <input type="hidden" name="hashtagId" th:value="${pageHandler.sc.hashtagId}">
     </form>
 </div>
 

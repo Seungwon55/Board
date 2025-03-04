@@ -4,6 +4,13 @@
 
 <mapper namespace="hello.board.board.mapper.BoardMemberMapper">
     <sql id="searchCondition">
+        <if test='categoryId!=0'>
+            AND b.category_id = #{categoryId}
+        </if>
+        <if test='hashtagId!=0'>
+            AND b.bno = bh.board_bno
+            AND bh.hashtag_id = #{hashtagId}
+        </if>
         <choose>
             <when test='option=="T"'>
                 AND b.title LIKE ('%' || #{keyword} || '%')
@@ -18,9 +25,16 @@
         </choose>
     </sql>
 
+    <sql id="boardHashtag">
+        <if test='hashtagId != 0'>
+            , board_hashtag bh
+        </if>
+    </sql>
+
     <select id="selectResultCnt" parameterType="SearchCondition" resultType="Integer">
         SELECT COUNT(*)
         FROM board b, member m
+        <include refid="boardHashtag"/>
         WHERE b.member_id = m.id
         <include refid="searchCondition"/>
     </select>
@@ -30,6 +44,7 @@
         FROM (SELECT rownum as bnum, b.*
               FROM (SELECT b.bno, b.title, m.name, b.reg_date, b.view_cnt
                     FROM board b, member m
+                    <include refid="boardHashtag"/>
                     WHERE b.member_id = m.id
                     <include refid="searchCondition"/>
                     ORDER BY bno DESC) b)

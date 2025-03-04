@@ -17,7 +17,7 @@ public class BoardDTO {
     private int comment_cnt;
     private Timestamp reg_date;
     private Timestamp up_date;
-
+    private int category_id;
 
     public BoardDTO() {
 

@@ -35,7 +35,7 @@ class PageHandlerTest {
 
     @Test
     public void pageHandlerWithSearchCondition() throws Exception {
-        SearchCondition sc = new SearchCondition(1, "T", "아메");
+        SearchCondition sc = new SearchCondition(1, "T", "아메", 2, 0);
         int resultCnt = boardService.getResultCnt(sc);
         PageHandler ph = new PageHandler(resultCnt, sc);
 

@@ -19,7 +19,7 @@ class BoardMemberDAOTest {
 
     @Test
     public void selectResultCntTest() throws Exception {
-        SearchCondition sc = new SearchCondition(1, "W", "멤버");
+        SearchCondition sc = new SearchCondition(1, "W", "멤버", 0, 0);
         int resultCnt = boardMemberDAO.selectResultCnt(sc);
 
         assertEquals(resultCnt, 256);
@@ -27,12 +27,12 @@ class BoardMemberDAOTest {
 
     @Test
     public void selectTest() throws Exception {
-        SearchCondition sc = new SearchCondition(7, "T", "아메");
+        SearchCondition sc = new SearchCondition(1, "", "", 0, 1);
         int resultCnt = boardMemberDAO.selectResultCnt(sc);
         PageHandler ph = new PageHandler(resultCnt, sc);
 
         List<BoardMemberDTO> boardMemberDTOList = boardMemberDAO.selectResultList(sc);
 
-        assertEquals(boardMemberDTOList.size(), 4);
+        assertEquals(boardMemberDTOList.size(), 3);
     }
 }

@@ -7,7 +7,7 @@ form.example {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 0 10px;
+    padding: 50px 0;
 }
 
 form.example select {
@@ -56,44 +56,103 @@ form.example a.btn:hover {
     text-decoration: underline;
 }
 
-hr {
-    width: 80%;
-    border: 1px solid black;
-}
-
 div.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     padding: 50px 0 0;
 }
 
-div.container > table {
-    width: 70%;
-    border: 1px solid #ddd;
-    border-spacing: 0;
+div.left-con {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-div.container tr:nth-child(even) {
-    background-color: white;
+div.left-con h2 {
+    margin-top: 25px;
+    margin-bottom: 0;
 }
 
-div.container th, td {
-    padding: 16px;
-    text-align: left;
+div.left-con hr {
+    border: none;
+    border-top: 2px solid lightgray;
+    width: 90%;
 }
 
-div.container th {
-    color: white;
-    background-color: #04AA6D;
+div.left-con ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-div.container td > a {
+#category li a {
+    padding: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    display: block
+}
+
+#category li a:hover {
+    text-decoration: underline;
+}
+
+#hashtag {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+#hashtag li {
+    display: inline-block;
+}
+
+#hashtag li a {
+    display: block;
+    padding: 6px 12px;
     text-decoration: none;
     color: black;
 }
 
-div.container td > a:hover {
+#hashtag li a:hover {
+    text-decoration: underline;
+}
+
+div.right-con {
+    flex-grow: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.right-con > table {
+    width: 90%;
+    border: 1px solid #ddd;
+    border-spacing: 0;
+}
+
+div.right-con tr:nth-child(even) {
+    background-color: white;
+}
+
+div.right-con th, td {
+    padding: 16px;
+    text-align: left;
+}
+
+div.right-con th {
+    color: white;
+    background-color: #04AA6D;
+}
+
+div.right-con td > a {
+    text-decoration: none;
+    color: black;
+}
+
+div.right-con td > a:hover {
     text-decoration: underline;
 }
 

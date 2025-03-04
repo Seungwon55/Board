@@ -12,6 +12,8 @@ public class SearchCondition {
     private String keyword = "";
     private Integer beginRow;
     private Integer endRow;
+    private Integer categoryId = 0;
+    private Integer hashtagId = 0;
 
     public SearchCondition() {
 
@@ -21,9 +23,11 @@ public class SearchCondition {
         this.page = page;
     }
 
-    public SearchCondition(Integer page, String option, String keyword) {
+    public SearchCondition(Integer page, String option, String keyword, Integer categoryId, Integer hashtagId) {
         this.page = page;
         this.option = option;
         this.keyword = keyword;
+        this.categoryId = categoryId;
+        this.hashtagId = hashtagId;
     }
 }

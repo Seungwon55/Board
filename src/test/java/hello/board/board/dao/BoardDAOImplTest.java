@@ -100,8 +100,8 @@ class BoardDAOImplTest {
 
     @Test
     public void selectResultCntTest() throws Exception {
-        SearchCondition sc = new SearchCondition(1, "T", "아메");
-        SearchCondition sc2 = new SearchCondition(1, "", "");
+        SearchCondition sc = new SearchCondition(1, "T", "아메", 1, 0);
+        SearchCondition sc2 = new SearchCondition(1, "", "", 1, 0);
 
         int rowCnt = boardDAO.selectResultCnt(sc);
         int rowCnt2 = boardDAO.selectResultCnt(sc2);
@@ -112,7 +112,7 @@ class BoardDAOImplTest {
 
     @Test
     public void selectAllByConditionTest() throws Exception {
-        SearchCondition sc = new SearchCondition(1, "", "");
+        SearchCondition sc = new SearchCondition(1, "", "", 1, 0);
         int resultCnt = boardDAO.selectResultCnt(sc);
         PageHandler ph = new PageHandler(resultCnt, sc);
 
