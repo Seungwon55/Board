@@ -23,11 +23,18 @@
             <textarea name="content" rows="20" th:text="${board.content}" placeholder="내용을 입력해 주세요." readonly></textarea>
         </label><br>
 
-        <a th:href="@{/board/update/{bno}(bno=${bno})}" class="btn btn-modify"><i class="fa fa-edit"></i>수정</a>
-        <form th:action="@{/board/delete/{bno}(bno=${bno},page=${page})}" method="post">
-            <button type="submit" class="btn btn-remove"><i class="fa fa-trash"></i>삭제</button>
-        </form>
-        <a th:href="@{/board/list(page=${page})}" class="btn btn-list"><i class="fa fa-bars"></i>목록</a>
+        <div class="btn-con">
+            <a th:href="@{/board/update/{bno}(bno=${bno})}" class="btn btn-modify"><i class="fa fa-edit"></i>수정</a>
+            <form th:action="@{/board/delete/{bno}(bno=${bno},page=${page})}" method="post">
+                <button type="submit" class="btn btn-remove"><i class="fa fa-trash"></i>삭제</button>
+            </form>
+            <a th:href="@{/board/list(page=${page})}" class="btn btn-list"><i class="fa fa-bars"></i>목록</a>
+            <form th:action="@{/board/updateLikes/{bno}(bno=${bno})}" method="post">
+                <button class="btn w3-button w3-theme-d1 w3-margin-bottom" id="like-btn">
+                    <i class="fa fa-thumbs-up"></i> 좋아요 <span id="like-count" th:text="${likesCnt}">0</span>
+                </button>
+            </form>
+        </div>
     </div>
 </div>
 

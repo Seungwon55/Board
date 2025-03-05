@@ -1,9 +1,7 @@
 package hello.board.board.dao;
 
-import hello.board.board.PageHandler;
 import hello.board.board.SearchCondition;
 import hello.board.board.dto.BoardDTO;
-import hello.board.member.dto.MemberDTO;
 
 import java.util.*;
 

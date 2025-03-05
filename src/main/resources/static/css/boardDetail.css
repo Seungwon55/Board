@@ -54,6 +54,12 @@ textarea {
     display: inline;
 }
 
+div.btn-con {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
 .btn {
     padding: 6px 12px; /* Some padding */
     border: 1px solid gray; /* Remove borders */
@@ -67,4 +73,9 @@ textarea {
 
 .btn:hover {
     text-decoration: underline;
+}
+
+#like-btn {
+    color: white;
+    background-color: #57707d;
 }

@@ -3,6 +3,7 @@ package hello.board.board.service;
 import hello.board.board.SearchCondition;
 import hello.board.board.dao.BoardDAO;
 import hello.board.board.dto.BoardDTO;
+import hello.board.likes.dao.LikesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class BoardServiceImpl implements BoardService {
     private final BoardDAO boardDAO;
 
     @Autowired
-    public BoardServiceImpl(BoardDAO boardDAO) {
+    public BoardServiceImpl(BoardDAO boardDAO, LikesDAO likesDAO) {
         this.boardDAO = boardDAO;
     }
 
@@ -42,10 +43,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDTO read(Integer bno) throws Exception {
-        BoardDTO boardDTO = boardDAO.select(bno);
-        boardDAO.increaseViewCnt(bno);
-
-        return boardDTO;
+        return boardDAO.select(bno);
     }
 
     @Override
@@ -80,5 +78,4 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDTO> getResultList(SearchCondition sc) throws Exception {
         return boardDAO.selectAllByCondition(sc);
     }
-
 }
